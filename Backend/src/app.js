@@ -2,6 +2,8 @@ const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+
 const app = express();
 
 // Middleware
@@ -16,5 +18,9 @@ app.get("/", (req, res) => {
     message: "GlobalTNA API is running",
   });
 });
+
+// Error Middleware
+app.use(notFound);
+app.use(errorHandler);
 
 module.exports = app;
