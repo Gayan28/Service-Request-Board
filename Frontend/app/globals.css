@@ -11,11 +11,3 @@ body {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
 }
-
-a {
-  text-decoration: none;
-}
-
-button {
-  cursor: pointer;
-}
