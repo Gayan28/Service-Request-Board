@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getToken, logout } from "@/lib/auth";
+import { getToken, logout } from "/lib/auth";
 import { useRouter } from "next/navigation";
 import { BriefcaseBusiness } from "lucide-react";
 

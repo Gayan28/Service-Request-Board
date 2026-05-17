@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { loginUser } from "@/services/authService";
-import { setToken } from "@/lib/auth";
+import { loginUser } from "/services/authService";
+import { setToken } from "/lib/auth";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
