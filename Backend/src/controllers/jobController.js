@@ -18,23 +18,23 @@ const getJobs = asyncHandler(async (req, res) => {
     filter.status = status;
   }
 
-  // BONUS: Search
-  if (search) {
-    filter.$or = [
-      {
-        title: {
-          $regex: search,
-          $options: "i",
-        },
+  // Search
+  if (search && search.trim() !== "") {
+  filter.$or = [
+    {
+      title: {
+        $regex: search,
+        $options: "i",
       },
-      {
-        description: {
-          $regex: search,
-          $options: "i",
-        },
+    },
+    {
+      description: {
+        $regex: search,
+        $options: "i",
       },
-    ];
-  }
+    },
+  ];
+}
 
   const jobs = await Job.find(filter).sort({ createdAt: -1 });
 
