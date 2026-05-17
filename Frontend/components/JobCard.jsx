@@ -11,7 +11,7 @@ export default function JobCard({ job }) {
 
   return (
     <Link href={`/jobs/${job._id}`}>
-      <div className="bg-slate-800 rounded-xl p-5 shadow-lg hover:scale-[1.02] transition border border-slate-700">
+      <div className="bg-slate-800 rounded-xl p-5 shadow-lg hover:-translate-y-1 hover:scale-[1.02] transition border border-slate-700">
         
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-xl font-bold">
