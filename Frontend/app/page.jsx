@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getJobs } from "@/services/jobService";
-import JobCard from "@/components/JobCard";
-import Loader from "@/components/Loader";
-import EmptyState from "@/components/EmptyState";
+import { getJobs } from "/services/jobService";
+import JobCard from "/components/JobCard";
+import Loader from "/components/Loader";
+import EmptyState from "/components/EmptyState";
 
 export default function HomePage() {
   const [jobs, setJobs] = useState([]);
