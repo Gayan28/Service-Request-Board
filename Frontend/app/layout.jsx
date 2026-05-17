@@ -1,8 +1,6 @@
 import "./globals.css";
-
 import { Toaster } from "react-hot-toast";
-
-import Navbar from "@/components/Navbar";
+import Navbar from "../components/Navbar";
 
 export const metadata = {
   title: "GlobalTNA Service Board",
