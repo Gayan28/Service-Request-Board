@@ -43,7 +43,18 @@ export default function HomePage() {
   }, [category, status]);
 
   //
-  // SEARCH HANDLER (manual trigger)
+  // DEBOUNCED SEARCH EFFECT
+  //
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      fetchJobs();
+    }, 500);
+
+    return () => clearTimeout(delayDebounce);
+  }, [search]);
+
+  //
+  // SEARCH HANDLER
   //
   const handleSearch = () => {
     fetchJobs();
@@ -65,7 +76,7 @@ export default function HomePage() {
       {/* FILTERS */}
       <div className="flex flex-col md:flex-row gap-4">
 
-        {/* CATEGORY FILTER */}
+        {/* CATEGORY */}
         <select
           className="bg-slate-800 p-2 rounded-md border border-slate-700"
           value={category}
@@ -78,7 +89,7 @@ export default function HomePage() {
           <option value="Joinery">Joinery</option>
         </select>
 
-        {/* STATUS FILTER */}
+        {/* STATUS */}
         <select
           className="bg-slate-800 p-2 rounded-md border border-slate-700"
           value={status}
@@ -90,7 +101,7 @@ export default function HomePage() {
           <option value="Closed">Closed</option>
         </select>
 
-        {/* SEARCH INPUT */}
+        {/* SEARCH */}
         <input
           type="text"
           placeholder="Search jobs..."
@@ -107,18 +118,20 @@ export default function HomePage() {
         </button>
       </div>
 
-      {/* CONTENT */}
-      {loading ? (
-        <Loader />
-      ) : jobs.length === 0 ? (
-        <EmptyState message="No jobs found" />
-      ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {jobs.map((job) => (
-            <JobCard key={job._id} job={job} />
-          ))}
-        </div>
-      )}
+      {/* CONTENT WRAPPER WITH MIN HEIGHT */}
+      <div className="min-h-[300px]">
+        {loading ? (
+          <Loader />
+        ) : jobs.length === 0 ? (
+          <EmptyState message="No jobs found" />
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {jobs.map((job) => (
+              <JobCard key={job._id} job={job} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
