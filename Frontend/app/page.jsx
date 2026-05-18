@@ -14,6 +14,16 @@ export default function HomePage() {
   const [status, setStatus] = useState("");
   const [search, setSearch] = useState("");
 
+  <div className="mb-8">
+  <h1 className="text-4xl font-bold mb-2">
+    Service Request Board
+  </h1>
+
+  <p className="text-slate-400">
+    Browse and manage homeowner service requests
+  </p>
+</div>
+
   //
   // FETCH JOBS
   //
@@ -61,11 +71,14 @@ export default function HomePage() {
   };
 
   return (
-    <div className="space-y-6">
+    /* 1. Changed 'space-y-6' to 'space-y-12' to add significantly larger gaps between main vertical sections.
+      2. Added 'px-6 py-10 max-w-7xl mx-auto' to push the entire layout away from the viewport edges and keep it clean.
+    */
+    <div className="space-y-12 px-6 py-10 max-w-7xl mx-auto">
       
       {/* HEADER */}
-      <div>
-        <h1 className="text-3xl font-bold">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight">
           Service Requests
         </h1>
         <p className="text-slate-400">
@@ -74,11 +87,12 @@ export default function HomePage() {
       </div>
 
       {/* FILTERS */}
-      <div className="flex flex-col md:flex-row gap-4">
+      {/* Increased the flex gap items from 'gap-4' to 'gap-6' for better horizontal spacing */}
+      <div className="flex flex-col md:flex-row gap-6">
 
         {/* CATEGORY */}
         <select
-          className="bg-slate-800 p-2 rounded-md border border-slate-700"
+          className="bg-slate-800 p-2.5 rounded-md border border-slate-700 text-sm"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
@@ -91,7 +105,7 @@ export default function HomePage() {
 
         {/* STATUS */}
         <select
-          className="bg-slate-800 p-2 rounded-md border border-slate-700"
+          className="bg-slate-800 p-2.5 rounded-md border border-slate-700 text-sm"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >
@@ -105,27 +119,28 @@ export default function HomePage() {
         <input
           type="text"
           placeholder="Search jobs..."
-          className="bg-slate-800 p-2 rounded-md border border-slate-700 flex-1"
+          className="bg-slate-800 p-2.5 rounded-md border border-slate-700 flex-1 text-sm"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
 
         <button
           onClick={handleSearch}
-          className="bg-cyan-500 px-4 py-2 rounded-md hover:bg-cyan-600"
+          className="bg-cyan-500 px-5 py-2.5 rounded-md hover:bg-cyan-600 font-medium transition-colors"
         >
           Search
         </button>
       </div>
 
       {/* CONTENT WRAPPER WITH MIN HEIGHT */}
-      <div className="min-h-[300px]">
+      <div className="min-h-[400px]">
         {loading ? (
           <Loader />
         ) : jobs.length === 0 ? (
           <EmptyState message="No jobs found" />
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          /* Increased the grid gaps from 'gap-4' to 'gap-6' so cards don't sit directly against each other */
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {jobs.map((job) => (
               <JobCard key={job._id} job={job} />
             ))}

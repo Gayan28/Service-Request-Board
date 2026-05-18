@@ -7,7 +7,56 @@
 }
 
 body {
-  background: #0f172a;
+  background: linear-gradient(
+    to bottom right,
+    #0f172a,
+    #111827,
+    #1e293b
+  );
+
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+button {
+  transition: all 0.2s ease;
+}
+
+/* 1. FORCE PAGE CONTAINMENT AND EDGE PADDING */
+main {
+  padding: 3rem 2rem !important; /* Forces thick margins from the screen edges and navbar */
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+}
+
+/* 2. FORCE GAPS BETWEEN SECTIONS (Header -> Filters -> Grid) */
+main > div.space-y-6, 
+main > div.space-y-12,
+main > div {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3.5rem !important; /* Creates clear layout separation */
+}
+
+/* 3. FORCE GAP INSIDE THE FILTER ROW */
+main select, 
+main input, 
+main button {
+  margin-right: 0.75rem !important;
+}
+
+div.flex.flex-col.md\:flex-row {
+  gap: 1.5rem !important; /* Separation between filter inputs */
+}
+
+/* 4. FORCE GRID SPACING BETWEEN JOB CARDS */
+.grid {
+  display: grid !important;
+  gap: 2rem !important; /* Increases gap between individual job cards */
+}
+
+/* 5. CARD INTERIOR BREATHING ROOM */
+a > div {
+  padding: 1.75rem !important; /* Forces spacious padding inside the cards */
 }
